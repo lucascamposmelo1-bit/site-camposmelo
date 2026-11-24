@@ -100,6 +100,7 @@
   .states span{border:1px solid rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:.8rem;color:rgba(255,255,255,.85)}
   .states .label{border:0;padding:0;color:rgba(255,255,255,.5)}
   .hero-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:34px;backdrop-filter:blur(6px)}
+  .hero-card .avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid var(--brass);margin-bottom:20px}
   .hero-card .initials{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--brass),#8a6a3c);display:grid;place-items:center;font-family:var(--serif);font-size:2rem;color:#fff;margin-bottom:20px}
   .hero-card h3{color:#fff;font-size:1.6rem}
   .hero-card .oab{color:var(--brass-2);font-size:.85rem;margin:6px 0 18px;letter-spacing:.04em}
@@ -146,8 +147,10 @@
 
   /* Sobre / Advogado */
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-  .portrait{aspect-ratio:4/5;border-radius:20px;background:linear-gradient(160deg,var(--ink-2),var(--ink-3));position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:30px}
-  .portrait::before{content:"CM";position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-family:var(--serif);font-size:9rem;color:rgba(184,146,90,.25);font-weight:600}
+  .portrait{aspect-ratio:3/4;max-width:480px;border-radius:20px;background:linear-gradient(160deg,var(--ink-2),var(--ink-3));position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:30px}
+  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+  .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,26,36,.55),transparent 45%)}
+  .portrait .tag{z-index:1}
   .portrait .tag{position:relative;background:#fff;border-radius:12px;padding:18px 22px;width:100%}
   .portrait .tag b{font-family:var(--serif);font-size:1.3rem;color:var(--ink);display:block}
   .portrait .tag span{font-size:.85rem;color:var(--muted)}
@@ -304,7 +307,7 @@
       </div>
     </div>
     <aside class="hero-card reveal">
-      <div class="initials">JM</div>
+      <img class="avatar" src="img/dr-jonatan-rosto.jpg" alt="Dr. Jonatan A. de Campos Melo" width="96" height="96">
       <h3>Dr. Jonatan A. de Campos Melo</h3>
       <div class="oab">OAB/SC 79.271 · OAB/MT 22.034</div>
       <ul>
@@ -409,15 +412,16 @@
   <div class="wrap about-grid">
     <div class="reveal">
       <div class="portrait">
+        <img src="img/dr-jonatan.jpg" alt="Dr. Jonatan A. de Campos Melo, advogado" loading="lazy">
         <div class="tag"><b>Dr. Jonatan A. de Campos Melo</b><span>Advogado · OAB/SC 79.271 · OAB/MT 22.034</span></div>
       </div>
-      <p class="photo-note">Espaço reservado para a foto profissional do advogado.</p>
     </div>
     <div class="about reveal">
       <span class="eyebrow">O escritório</span>
       <h2>Assessoria e consultoria jurídica para pessoas e empresas.</h2>
       <p>A Campos Melo Advocacia é especializada em assessoria e consultoria jurídica, com atendimento personalizado para empresas e indivíduos. Nosso trabalho começa entendendo a fundo a sua situação para, então, construir a estratégia mais adequada.</p>
-      <p>À frente do escritório, o Dr. Jonatan A. de Campos Melo reúne mais de uma década de experiência em causas empresariais e individuais, incluindo litígios complexos. Em reconhecimento à sua atuação, recebeu moção de aplausos da Câmara Municipal de Cuiabá/MT.</p>
+      <p>À frente do escritório, o Dr. Jonatan A. de Campos Melo soma mais de uma década de advocacia, representando empresas e pessoas físicas em uma ampla variedade de questões jurídicas e em diversos litígios complexos.</p>
+      <p>Com uma atuação centrada no cliente e na busca incansável pela justiça, foi reconhecido pela comunidade jurídica e recebeu <strong>moção de aplausos da Câmara Municipal de Cuiabá/MT</strong> por sua expertise e dedicação — reconhecimento que reforça o compromisso de oferecer um alto padrão de advocacia a cada cliente.</p>
       <div class="badges">
         <span class="badge"><b>OAB/SC</b> 79.271</span>
         <span class="badge"><b>OAB/MT</b> 22.034</span>
