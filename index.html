@@ -196,6 +196,49 @@ footer a:hover{color:var(--peach)}
 .wa:hover{transform:scale(1.08)}
 .wa svg{width:32px;height:32px;fill:#fff}
 
+
+/* ===== Efeitos visuais ===== */
+@media (prefers-reduced-motion:no-preference){
+  /* Entrada da abertura */
+  .hero h1,.hero .sub,.hero .where,.hero-actions{opacity:0;transform:translateY(28px);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero .sub{animation-delay:.25s}.hero .where{animation-delay:.4s}.hero-actions{animation-delay:.55s}
+  .hero-photo{opacity:0;transform:scale(.94);animation:zoom 1.3s .15s cubic-bezier(.2,.7,.2,1) forwards}
+  .badge{opacity:0;transform:translateX(-24px);animation:side .8s 1s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero::before{animation:glow 1.6s ease forwards;opacity:0}
+  /* Brilho dourado passando no título */
+  .hero h1{background:linear-gradient(100deg,var(--peach) 0%,var(--peach) 40%,#fff6e6 50%,var(--peach) 60%,var(--peach) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:up .9s cubic-bezier(.2,.7,.2,1) forwards,shine 6s 1.2s ease-in-out infinite}
+  /* Reflexo passando nos botões dourados */
+  .btn:not(.outline){position:relative;overflow:hidden}
+  .btn:not(.outline)::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:sweep 4.5s 2s ease-in-out infinite}
+  /* Pulso no WhatsApp */
+  .wa::before{content:"";position:absolute;inset:0;border-radius:50%;background:#19d608;z-index:-1;animation:pulse 2.2s ease-out infinite}
+  /* Moldura do retrato flutuando */
+  .hero-photo::before{animation:float 7s ease-in-out infinite}
+  /* Seções aparecendo ao rolar */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .stagger>*{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+  .stagger.in>*{opacity:1;transform:none}
+  .stagger.in>*:nth-child(2){transition-delay:.12s}.stagger.in>*:nth-child(3){transition-delay:.24s}.stagger.in>*:nth-child(4){transition-delay:.36s}
+  /* Linha dourada que cresce sob os títulos */
+  h2.line-in{position:relative;display:inline-block;padding-bottom:14px}
+  h2.line-in::after{content:"";position:absolute;left:50%;bottom:0;height:2px;width:0;background:var(--gold);transform:translateX(-50%);transition:width 1.1s .3s cubic-bezier(.2,.7,.2,1)}
+  .in h2.line-in::after,h2.line-in.in::after{width:90px}
+  /* Brilho que segue o mouse nos cards */
+  .card,.step,.area-box{position:relative;overflow:hidden}
+  .card::before,.step::before,.area-box::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(249,220,180,.12),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}
+  .card:hover::before,.step:hover::before,.area-box:hover::before{opacity:1}
+}
+@keyframes up{to{opacity:1;transform:none}}
+@keyframes zoom{to{opacity:1;transform:none}}
+@keyframes side{to{opacity:1;transform:none}}
+@keyframes glow{to{opacity:1}}
+@keyframes shine{0%,55%{background-position:100% 0}100%{background-position:-50% 0}}
+@keyframes sweep{0%,70%{left:-80%}100%{left:140%}}
+@keyframes pulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-6px)}}
+.wa{isolation:isolate}
+
 @media (max-width:1000px){
   .nav{position:fixed;inset:80px 0 auto;background:#000;flex-direction:column;align-items:flex-start;padding:26px 24px 34px;gap:22px;border-bottom:1px solid var(--line);transform:translateY(-140%);transition:transform .3s}
   .nav.open{transform:none}
@@ -264,19 +307,19 @@ footer a:hover{color:var(--peach)}
   </div>
 </section>
 
-<div class="trust">
+<div class="trust reveal">
   <div class="wrap">
-    <div><b>+10 anos</b><span>de experiência na advocacia</span></div>
-    <div><b>2 OABs</b><span>inscrição em SC e MT</span></div>
-    <div><b>4 estados</b><span>com atendimento presencial</span></div>
+    <div><b>+<span data-count="10">10</span> anos</b><span>de experiência na advocacia</span></div>
+    <div><b><span data-count="2">2</span> OABs</b><span>inscrição em SC e MT</span></div>
+    <div><b><span data-count="4">4</span> estados</b><span>com atendimento presencial</span></div>
     <div><b>Brasil</b><span>atendimento online em todo o país</span></div>
   </div>
 </div>
 
 <section id="diferenciais" class="center">
   <div class="wrap">
-    <h2>Nossos diferenciais</h2>
-    <div class="cards">
+    <h2 class="line-in reveal">Nossos diferenciais</h2>
+    <div class="cards stagger">
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><h3>Atuação personalizada</h3><p>Cada cliente tem necessidades, objetivos e desafios próprios. Por isso, desenvolvemos estratégias individualizadas, com acompanhamento próximo e compreensão aprofundada de cada situação.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M5 21h14M7 7h10M7 7l-3 7a3 3 0 0 0 6 0L7 7zM17 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg></div><h3>Especialização e conhecimento técnico</h3><p>Atuação pautada pelo constante aprimoramento jurídico e pela especialização em áreas estratégicas do Direito, com abordagem técnica e atualizada para questões complexas.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 11l3 3 5-6"/><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/></svg></div><h3>Proximidade e confiança</h3><p>Relações profissionais baseadas em transparência, disponibilidade e confiança. Você recebe acompanhamento próximo e comunicação clara em todas as etapas.</p></div>
@@ -286,12 +329,12 @@ footer a:hover{color:var(--peach)}
 
 <section class="areas" id="areas">
   <div class="wrap">
-    <div class="center">
+    <div class="center reveal">
       <p class="kicker">Como podemos te ajudar?</p>
       <h2>Conheça nossas áreas de atuação</h2>
       <p class="lead" style="margin-top:14px">Clique em cada área para saber em quais situações podemos atuar.</p>
     </div>
-    <div class="area-grid">
+    <div class="area-grid stagger">
       <div class="area-box">
         <div class="area-head"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v18M5 21h14M7 7h10M7 7l-3 7a3 3 0 0 0 6 0L7 7zM17 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></svg></div><h3>Direito Civil</h3></div>
         <details class="item"><summary>Bancário</summary><p>Revisão de contratos e juros abusivos, busca e apreensão de veículos, negativação e cobranças indevidas.</p></details>
@@ -321,7 +364,7 @@ footer a:hover{color:var(--peach)}
 
 <section class="about" id="sobre">
   <div class="wrap">
-    <div class="about-text">
+    <div class="about-text reveal">
       <h2>Sobre nós</h2>
       <p>Atuação estratégica e especializada em <strong>assessoria e consultoria jurídica</strong>, oferecendo soluções de alto nível para empresas e pessoas. Nosso compromisso é um atendimento <strong>personalizado e preciso</strong>, analisando cada caso com dedicação e excelência.</p>
       <div class="lawyer-card">
@@ -336,11 +379,11 @@ footer a:hover{color:var(--peach)}
 
 <section class="process" id="processo">
   <div class="wrap">
-    <div class="process-head">
+    <div class="process-head reveal">
       <h2>O processo da sua defesa <span>Passo a passo</span></h2>
       <p>Desde o primeiro contato, nosso foco é esclarecer e simplificar todo o processo jurídico para você, com uma estratégia eficiente e representação qualificada em todas as etapas.</p>
     </div>
-    <div class="steps">
+    <div class="steps stagger">
       <div class="step"><div class="n">1</div><h3>Primeiro contato</h3><p>Você nos chama pelo WhatsApp e agendamos uma reunião, online ou presencial.</p></div>
       <div class="step"><div class="n">2</div><h3>Análise aprofundada do caso</h3><p>Avaliamos todos os detalhes da situação e as provas envolvidas para traçar o melhor caminho.</p></div>
       <div class="step"><div class="n">3</div><h3>Estratégia sob medida</h3><p>Desenvolvemos uma abordagem personalizada para a melhor condução do seu caso.</p></div>
@@ -353,10 +396,10 @@ footer a:hover{color:var(--peach)}
   <div class="wrap brasil-grid">
     <div class="mapa" aria-hidden="true"></div>
     <div>
-      <span class="tag">Atendemos em todo o Brasil</span>
+      <span class="tag reveal">Atendemos em todo o Brasil</span>
       <h2>Não importa onde você esteja, estamos prontos para te ajudar</h2>
       <p>Atendimento acessível e eficiente, com consultoria personalizada para que você ou sua empresa estejam sempre em conformidade com a lei e usem o Direito a seu favor.</p>
-      <div class="modes">
+      <div class="modes stagger">
         <div class="mode"><b>Presencial</b><span>Santa Catarina, Mato Grosso, Paraná e São Paulo</span></div>
         <div class="mode"><b>Online</b><span>Reuniões por vídeo e processo eletrônico em todo o país</span></div>
       </div>
@@ -367,8 +410,8 @@ footer a:hover{color:var(--peach)}
 
 <section id="duvidas">
   <div class="wrap">
-    <div class="center"><h2>Dúvidas frequentes</h2></div>
-    <div class="faq-list">
+    <div class="center"><h2 class="line-in reveal">Dúvidas frequentes</h2></div>
+    <div class="faq-list reveal">
       <details open><summary>Vocês atendem clientes de outros estados?</summary><p>Sim. O atendimento presencial é em SC, MT, PR e SP, e o online alcança clientes de todo o Brasil, com reuniões por vídeo e acompanhamento do processo eletrônico.</p></details>
       <details><summary>Como funciona a primeira reunião?</summary><p>Ouvimos sua situação, analisamos os documentos que você tiver e explicamos os caminhos possíveis. Ao final, você recebe uma proposta com o escopo do trabalho e os honorários.</p></details>
       <details><summary>Quais documentos devo separar?</summary><p>Documento com foto, comprovante de endereço e tudo o que tiver relação com o caso: contratos, mensagens, notificações, boletins de ocorrência ou decisões judiciais. Se faltar algo, orientamos o que buscar.</p></details>
@@ -383,12 +426,12 @@ footer a:hover{color:var(--peach)}
     <div>
       <h2>Agende uma reunião</h2>
       <p class="lead">Conte brevemente sua situação. O retorno é feito pelo próprio advogado.</p>
-      <div class="channels">
+      <div class="channels stagger">
         <a class="channel" href="https://wa.me/5547989258271" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.8 1.5 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 23.1c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.3 1.1 1.2-4.2-.3-.4a10.4 10.4 0 0 1-1.6-5.5C5.3 9.8 10.1 5.1 16 5.1s10.7 4.7 10.7 10.5S21.9 26.1 16 26.1z"/></svg></span><span><small>WhatsApp e telefone</small><b>(47) 98925-8271</b></span></a>
         <a class="channel" href="https://www.instagram.com/camposmeloadvocacia/" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span><span><small>Instagram</small><b>@camposmeloadvocacia</b></span></a>
       </div>
     </div>
-    <form id="form">
+    <form id="form" class="reveal">
       <h3>Envie sua mensagem</h3>
       <p>Ao enviar, sua mensagem abre pronta no WhatsApp do escritório.</p>
       <div class="row">
@@ -434,6 +477,18 @@ footer a:hover{color:var(--peach)}
     const t=`Olá! Meu nome é ${v('nome')}${v('cidade')?', de '+v('cidade'):''}.\nAssunto: ${v('assunto')}\nAtendimento: ${v('formato')}\n\n${v('msg')}`;
     window.open('https://wa.me/5547989258271?text='+encodeURIComponent(t),'_blank');
   });
+
+  // Efeitos: aparecer ao rolar, contadores e brilho dos cards
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(el=>{if(reduce)return;const end=+el.dataset.count,t0=performance.now(),d=1400;
+      const tick=now=>{const p=Math.min((now-t0)/d,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)};el.textContent='0';requestAnimationFrame(tick)});
+    io.unobserve(e.target)}),{threshold:.15});
+  document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
+  document.querySelectorAll('.card,.step,.area-box').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+  // Leve paralaxe na foto da abertura
+  const ph=document.querySelector('.hero-photo .frame');
+  if(!reduce&&ph&&matchMedia('(min-width:1001px)').matches){addEventListener('scroll',()=>{const y=Math.min(scrollY,700);ph.style.transform=`translateY(${y*0.08}px)`},{passive:true})}
   document.getElementById('ano').textContent=new Date().getFullYear();
 </script>
 </body>
