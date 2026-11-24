@@ -67,7 +67,7 @@ h3{font-size:1.3rem;color:var(--peach)}
 .burger{display:none;background:none;border:0;color:#fff;cursor:pointer}
 
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 70px;overflow:hidden}
-.hero::before{content:"";position:absolute;left:-180px;top:50%;width:620px;height:620px;transform:translateY(-50%);background:var(--img-logo) center/contain no-repeat;opacity:.45;pointer-events:none}
+.hero::before{content:"";position:absolute;inset:0;background:var(--img-logo) left center/cover no-repeat;pointer-events:none}
 .hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
 .hero h1{font-size:clamp(2rem,3.4vw,2.9rem);color:var(--peach);text-transform:uppercase;letter-spacing:.01em}
 .hero .sub{font-size:1.15rem;color:var(--white);margin:22px 0 14px;font-weight:500}
@@ -130,7 +130,7 @@ section{padding:110px 0}
 .honor b{color:var(--peach)}
 
 .process{position:relative;overflow:hidden}
-.process::before{content:"";position:absolute;left:-120px;top:60px;width:440px;height:440px;background:var(--img-logo) center/contain no-repeat;opacity:.12;pointer-events:none}
+.process::before{content:"";position:absolute;inset:0;background:var(--img-logo) left center/cover no-repeat;opacity:.6;pointer-events:none}
 .process-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;position:relative}
 .process-head h2{color:var(--white);font-weight:400;font-size:clamp(1.6rem,3vw,2.1rem)}
 .process-head h2 span{display:block;color:var(--peach);font-weight:600;font-size:clamp(2.4rem,5vw,3.6rem);text-transform:uppercase}
@@ -222,7 +222,6 @@ footer a:hover{color:var(--peach)}
   body{font-size:16px}
   .steps,.modes,.row{grid-template-columns:1fr}
   .area-box,form{padding:26px 22px}
-  .hero::before{width:420px;height:420px;left:-200px;top:30%}
   .btn{width:100%}
   .hero-actions{flex-direction:column}
 }
